@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 31.08.2026 21:46:10
+// Create Date: 31.08.2026 21:52:54
 // Design Name: 
-// Module Name: or_gate
+// Module Name: tb_xnor_gate
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,11 +20,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module or_gate(
-   input A,B,
-   output Y
+module tb_xnor_gate;
+   reg A,B;
+   wire Y;
+   
+or_gate uut(
+   .A(A),
+   .B(B),
+   .Y(Y)
+);
 
-    );
-    assign Y= ~(A^B);
-    
+initial begin
+ A=0;B=0;#10;
+ A=0;B=1;#10;  
+ A=1;B=0;#10;  
+ A=1;B=1;#10;
+ $finish;
+end     
 endmodule
