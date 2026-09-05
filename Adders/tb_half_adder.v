@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 02.09.2026 18:15:35
+// Create Date: 02.09.2026 18:22:39
 // Design Name: 
-// Module Name: half_adder
+// Module Name: tb_half_adder
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,12 +20,23 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module half_adder(
-    input A,
-    input B,
-    output S,
-    output C
-    );
-    assign S = A^B;
-    assign C = A&B;
+module tb_half_adder;
+  reg A,B;
+  wire S,C;
+  
+half_adder uut(
+     .A(A),
+     .B(B),
+     .S(S),
+     .C(C)
+     ); 
+     
+ initial begin
+ A=0;B=0;#10;
+ A=0;B=1;#10;
+ A=1;B=0;#10;
+ A=1;B=1;#10;
+ $finish;
+ end
+      
 endmodule
